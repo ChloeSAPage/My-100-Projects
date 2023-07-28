@@ -1,6 +1,6 @@
 import random
 
-rock = '''
+rock = '''Rock
     _______
 ---'   ____)
       (_____)
@@ -9,7 +9,7 @@ rock = '''
 ---.__(___)
 '''
 
-paper = '''
+paper = '''Paper
     _______
 ---'   ____)____
           ______)
@@ -18,7 +18,7 @@ paper = '''
 ---.__________)
 '''
 
-scissors = '''
+scissors = '''Scissors
     _______
 ---'   ____)____
           ______)
@@ -30,23 +30,34 @@ scissors = '''
 # 3 beats 2
 # 2 beats 1
 user_choice = int(input("Choose 1 for Rock, 2 for Paper or 3 for Scissors "))
+user_choice -= 1
+computer_choice = random.randint(0 , 2)
 
-computer_choice = random.randint(1 , 3)
+# 0 beats 2
+# 2 beats 1
+# 1 beats 0
+
+# Showing the ascii art.
+list = [rock, paper, scissors]
+print(f"You picked: {list[user_choice]}")
+print(f"The computer picked: {list[computer_choice]}")
 
 # The game
-
 if user_choice == computer_choice:
     print("Draw!")
 
-elif user_choice == 1 and computer_choice == 3:
+elif user_choice == 0 and computer_choice == 2:
     print("You win!")
 
-elif user_choice > computer_choice:
+elif user_choice == 1 and  computer_choice == 0:
+    print("You win!")
+
+elif user_choice == 2 and  computer_choice == 1:
     print("You win!")
 
 elif user_choice > 3:
-    print("You can choose that number")
+    print("You can't choose that number")
+
 else:
     print("You lose!")
 
-print(f"computer = {computer_choice} you = {user_choice}")
