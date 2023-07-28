@@ -38,9 +38,9 @@ computer_choice = random.randint(0 , 2)
 # 1 beats 0
 
 # Showing the ascii art.
-list = [rock, paper, scissors]
-print(f"You picked: {list[user_choice]}")
-print(f"The computer picked: {list[computer_choice]}")
+ascii_art = [rock, paper, scissors]
+print(f"You picked: {ascii_art[user_choice]}")
+print(f"The computer picked: {ascii_art[computer_choice]}")
 
 # The game
 if user_choice == computer_choice:
@@ -55,7 +55,7 @@ elif user_choice == 1 and  computer_choice == 0:
 elif user_choice == 2 and  computer_choice == 1:
     print("You win!")
 
-elif user_choice > 3:
+elif user_choice >= 3:
     print("You can't choose that number")
 
 else:
