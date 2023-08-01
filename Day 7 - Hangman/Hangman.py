@@ -12,21 +12,33 @@ print(rand_word)
 
 underscores = list("_"*len(rand_word))
 
-print(underscores)
+lives = 5 
+letters_guessed = []
 
-
-guess = " "
-counter = 0
 while True:
-    user_guess = input("Guess a letter: ")
+    
+    print(underscores)
+    user_guess = input("Guess a letter: ").lower()
+    letters_guessed.append(user_guess)
+    print(f"You have guessed these letters: {letters_guessed}")
+    
     if user_guess in rand_word:
         for i, letter in enumerate(rand_word):
             if letter == user_guess:
                 underscores[i] = letter
-                continue
+                
+        if "_" not in underscores:
+            print("You win!")
+            print(f"You had {lives} lives left")
+            break 
+        else:
+            print(underscores)
+            continue
 
     else:
-        print("no")
-        break
-
-print(underscores)
+        lives -= 1
+        print(f"That letter is not in the word. You have lost 1 life.\nYou have {lives} lives left")
+        if lives == 0:
+            print(f"You're out of lives! You lose. The word was {rand_word}")
+            break
+        continue
