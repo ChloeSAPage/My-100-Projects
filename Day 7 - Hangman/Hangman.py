@@ -31,8 +31,6 @@ underscores = list("_"*len(rand_word))
 
 lives = 6 
 letters_guessed = []
-print(f"\n {underscores}")
-
 print(ASCII_ART.stages[6])
 while True:
     user_guess = input("Take a guess: ").lower()
@@ -60,14 +58,15 @@ while True:
             break
         
         else:
-            print(underscores)
+            print(f"{' '.join(underscores)}\n")
             continue
 
     else:
         lives -= 1
-        print(f"That letter is not in the word. You have lost 1 life.\n You have {lives} lives left")
+        print(f"That letter is not in the word. You have lost 1 life.\nYou have {lives} lives left")
         print(ASCII_ART.stages[lives])
-        print(underscores)
+        print(f"{' '.join(underscores)}\n")
+        
         if lives == 0:
             print(f"You're out of lives!\nYou lose.\nThe word was {rand_word}.")
             break
