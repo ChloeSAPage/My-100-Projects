@@ -4,22 +4,27 @@ import ASCII_ART
 
 print(ASCII_ART.logo)
 
-# Choose the difficulty of word
-difficulty = input(f"\nChoose the difficulty. Easy, Medium or Hard: ").lower().strip()
-
 # Get the words based on difficulty
-if difficulty == "easy":
-    with open("Day 7 - Hangman\easy_words.txt", "r") as file:
-        words = file.readlines()
+while True:
+    difficulty = input(f"\nChoose the difficulty. Easy, Medium or Hard: ").lower().strip()
 
-if difficulty == "medium":
-    with open("Day 7 - Hangman\medium_words.txt", "r") as file:
-        words = file.readlines()
+    if difficulty == "easy":
+        with open("Day 7 - Hangman\easy_words.txt", "r") as file:
+            words = file.readlines()
+        break
+    elif difficulty == "medium":
+        with open("Day 7 - Hangman\medium_words.txt", "r") as file:
+            words = file.readlines()
+        break
 
-if difficulty == "hard":
-    with open("Day 7 - Hangman\hard_words.txt", "r") as file:
-        words = file.readlines()
+    elif difficulty == "hard":
+        with open("Day 7 - Hangman\hard_words.txt", "r") as file:
+            words = file.readlines()
+        break
 
+    else:
+        print("Please select a difficulty")
+        continue
 # Make sure its clean
 words = [word.lower().strip("\n").rstrip() for word in words]
 
@@ -33,14 +38,14 @@ lives = 6
 letters_guessed = []
 print(ASCII_ART.stages[6])
 while True:
-    user_guess = input("Take a guess: ").lower()
+    user_guess = input("Take a guess: ").lower().strip()
     
     if user_guess in letters_guessed:
             print("You have already guessed that")
             continue
 
     letters_guessed.append(user_guess)
-    print(f"You have guessed: {letters_guessed}")
+    print(f"You have guessed: {' , '.join(letters_guessed)}")
 
     if user_guess in rand_word:
         for i, letter in enumerate(rand_word):
@@ -48,7 +53,7 @@ while True:
                 underscores[i] = letter
 
         if "_" not in underscores:
-            print("You win!")
+            print(ASCII_ART.trophy)
             print(f"You had {lives} lives left")
             print(f"The word was {rand_word}")
             break 
