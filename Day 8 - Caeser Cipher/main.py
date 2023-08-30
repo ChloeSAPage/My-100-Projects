@@ -1,50 +1,32 @@
-alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm','n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm','n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-direction = input("Do you wish to encode or decode \n")
-text = input("Choose a word \n")
-shift= int(input("Choose a number \n"))
-
-# Encrypt
-def encode(text, shift):
-  encrypt=""
-  for letter in text:
-        place = alphabet.index(letter)
-        newplace = place + shift
-        encrypt += alphabet[newplace]
-  return f"Your encrypted word is {encrypt}"
-
-#encode(text, shift)
-
-# Decrypt
-
-def decode(text, shift):
-  decrypt = ""
-  for letter in text:
-    place = alphabet.index(letter)
-    newplace = place - shift
-    decrypt += alphabet[newplace]
-  return f"Your decoded word is {decrypt}"
-
-#To decode or not decode
-match direction:
-    case "encode":
-      print(encode(text, shift))
-    case "decode":
-      print(decode(text, shift))
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+            'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+            'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+special_characters = ['!', '?', '.', ',', ';', ':', "'", '"', '`',
+    '+', '-', '*', '/', '%', '=',
+    '(', ')', '{', '}', '[', ']', '<', '>',
+    '@', '#', '$', '&', '|', '_', '~',
+    '$', '€', '¥', '£', '₹', '1','2','3','4','5','6','7','8','9','0']
 
 # Combined
 def ceaser(text, shift, direction):
     word =""
-    if direction=="encode":
-        for letter in text:
-            place = alphabet.index(letter)
+    for letter in text:
+      if letter not in special_characters:
+        place = alphabet.index(letter)
+        if direction=="encode":
             newplace = place + shift
             word += alphabet[newplace]
-        return f"Your encrypted word is {word}"
-    elif direction=="decode":
-        for letter in text:
-            place = alphabet.index(letter)
+        elif direction=="decode":
             newplace = place - shift
             word += alphabet[newplace]
-        return f"Your decoded word is {word}"
+      else:
+         word += letter
+    return f"Your encrypted word is {word}"
+
+while True:
+   direction = input("Do you wish to encode or decode \n")
+   text = input("Choose a word \n").lower()
+   shift = int(input("Choose a number \n")) % 26
+
 
 print(ceaser(text, shift, direction))
