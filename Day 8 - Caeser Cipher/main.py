@@ -30,3 +30,21 @@ match direction:
       print(encode(text, shift))
     case "decode":
       print(decode(text, shift))
+
+# Combined
+def ceaser(text, shift, direction):
+    word =""
+    if direction=="encode":
+        for letter in text:
+            place = alphabet.index(letter)
+            newplace = place + shift
+            word += alphabet[newplace]
+        return f"Your encrypted word is {word}"
+    elif direction=="decode":
+        for letter in text:
+            place = alphabet.index(letter)
+            newplace = place - shift
+            word += alphabet[newplace]
+        return f"Your decoded word is {word}"
+
+print(ceaser(text, shift, direction))
