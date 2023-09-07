@@ -2,7 +2,7 @@ alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
             'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
             'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 special_characters = ['!', '?', '.', ',', ';', ':', "'", '"', '`',
-    '+', '-', '*', '/', '%', '=',
+    '+', '-', '*', '/', '%', '=','¬', '^',
     '(', ')', '{', '}', '[', ']', '<', '>',
     '@', '#', '$', '&', '|', '_', '~',
     '$', '€', '¥', '£', '₹', '1','2','3','4','5','6','7','8','9','0']
@@ -24,9 +24,12 @@ def ceaser(text, shift, direction):
     return f"Your encrypted word is {word}"
 
 while True:
-   direction = input("Do you wish to encode or decode \n")
-   text = input("Choose a word \n").lower()
-   shift = int(input("Choose a number \n")) % 26
-
-
-print(ceaser(text, shift, direction))
+    direction = input("Do you wish to encode or decode \n")
+    text = input("Choose a word \n").lower()
+    shift = int(input("Choose a number \n")) % 26
+    print(ceaser(text, shift, direction))
+    again = input("Do you wish to start again? Yes or No? ").lower()
+    if again == "yes":
+       continue
+    elif again == "no":
+       break
