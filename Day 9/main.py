@@ -1,22 +1,24 @@
 from logo import logo
 import os
 
-bidders = []
 print(logo)
 print("Welcome to the secret aution programme")
 
+bidders = {}
 while True:
     name = input("What is your name? " )
-    bid_amount = input("What's your bid? ")
+    bid_amount = int(input("What's your bid? "))
     more =  input("Are there any more bidders? Yes or No? ").lower()
-    new_bidder = {}
-    new_bidder["name"] = name
-    new_bidder["bid"] = bid_amount
-    bidders.append(new_bidder)
-    print(bidders)
+    bidders[name] = bid_amount
     
     if more == "yes":
-        #os.system('cls')
+        os.system('cls')
         continue
-    if more == "no":
+    elif more == "no":
+        max_value = max(bidders.values())
+        max_key = max(bidders, key=bidders.get).capitalize()
+        print(f"The highest bidder is {max_key} with a bid of {max_value}.")
         break
+    else:
+        print("Please enter yes or no")
+        continue
