@@ -19,6 +19,10 @@ while True:
         pass
 
     if sum(user_cards) > 21:
+        # if 11 in user_cards:
+        #   replace with 1
+        # check if still over 21
+
         print(f"You:{user_cards}")
         print(f"Dealer:{dealer_cards}")
         print("You went bust! You lose!")
