@@ -2,7 +2,7 @@ import random
 
 
 # Draw Cards
-cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 user_cards = random.choices(cards, k=2)
 dealer_cards =  random.choices(cards, k=2)
 # Display Cards
