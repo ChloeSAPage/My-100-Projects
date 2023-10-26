@@ -41,10 +41,10 @@ def check_dealer_cards(user_cards, dealer_cards):
                     dealer_cards.append(random.choice(cards))
 
             elif sum(dealer_cards) > 21:
-                if 11 in user_cards:
-                    for index, card in enumerate(user_cards):
+                if 11 in dealer_cards:
+                    for index, card in enumerate(dealer_cards):
                         if card == 11:
-                            user_cards[index] = 1
+                            dealer_cards[index] = 1
                             continue
                 else:
                     print(f"You:{user_cards}")
